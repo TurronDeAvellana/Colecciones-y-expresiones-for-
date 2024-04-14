@@ -5,7 +5,9 @@ package object Canicas {
 
   def canicasPosiblesFrasco(f:Int, c:Int): List[Frasco] ={
 
-    List((1,2),(2,3))
-
+    val lista = for{
+      n <- 0 until c+1
+    } yield ((f,n))
+    lista.toList
   }
 }
