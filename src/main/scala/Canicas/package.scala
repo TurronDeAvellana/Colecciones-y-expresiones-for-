@@ -21,6 +21,18 @@ package object Canicas {
   }
 
   def mezclarLCanicas(lc: List[Distr]): List[Distr]={
+
+    val lista = for{l <- lc} yield{
+      l
+    }
+
+    lista.toList
+
+
+
+  }
+/*
+  def mezclarLCanicas(lc: List[Distr]): List[Distr]={
     //List(lc(0)(0))
     //List(List(lc(0)(0)),List(lc(0)(1)))
 
@@ -34,6 +46,6 @@ package object Canicas {
   }
 
 
-
+ */
 
 }
