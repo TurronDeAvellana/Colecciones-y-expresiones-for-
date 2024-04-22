@@ -22,7 +22,7 @@ package object Canicas {
 
   //Esta es la prueba #1 que funciona especificamente para la entrada (3,n)
 
-  def mezclarLCanicas(lc: List[Distr]): List[Distr] ={
+  def mezclarLCanicas1(lc: List[Distr]): List[Distr] ={
     val numeroDeFrascos = lc.length
     val numeroDeCanicas = (lc(0).length)
 
@@ -38,6 +38,30 @@ package object Canicas {
     lista.toList
   }
 
+  def mezclarLCanicas2(lc: List[Distr]): List[Frasco] ={
+    val numeroDeFrascos = lc.length
+    val numeroDeCanicas = (lc(0).length)
+
+    val lista = {
+      for{
+        n <- 0 until numeroDeFrascos
+        c <- 0 until numeroDeCanicas
+
+      }yield {lc(n)(c)}
+    }
+    lista.toList
+  }
+
+  def mezclarLCanicas(lc: List[Distr]): List[Distr] = {
+    lc match {
+      case Nil => List(List())
+      case head :: tail =>
+        for {
+          h <- head
+          t <- mezclarLCanicas(tail)
+        } yield h :: t
+    }
+  }
 
 
 
