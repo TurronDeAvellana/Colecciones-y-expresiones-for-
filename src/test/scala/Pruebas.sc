@@ -8,6 +8,8 @@ val listota = mezclarLCanicas(canicasPorFrasco(3,5))
 
 listota.foreach(elem => println(elem))
 
+distribucion(10,3,5)
+
 
 
 

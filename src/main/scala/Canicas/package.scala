@@ -1,19 +1,19 @@
 package object Canicas {
 
-  type Frasco = (Int,Int)
+  type Frasco = (Int, Int)
   type Distr = List[Frasco]
 
-  def canicasPosiblesFrasco(f:Int, c:Int): List[Frasco] ={
-    val lista = for{
-      n <- 0 until c+1
-    } yield ((f,n))
+  def canicasPosiblesFrasco(f: Int, c: Int): List[Frasco] = {
+    val lista = for {
+      n <- 0 until c + 1
+    } yield ((f, n))
     lista.toList
   }
 
-  def canicasPorFrasco(n:Int, c:Int): List[Distr]={
-    val lista = for{
-      x <- 1 until n+1
-    } yield (canicasPosiblesFrasco(x,c))
+  def canicasPorFrasco(n: Int, c: Int): List[Distr] = {
+    val lista = for {
+      x <- 1 until n + 1
+    } yield (canicasPosiblesFrasco(x, c))
 
     lista.toList
   }
@@ -28,3 +28,14 @@ package object Canicas {
         } yield h :: t
     }
   }
+
+  def distribucion(m: Int, n: Int, c: Int): List[Distr] = {
+    mezclarLCanicas(canicasPorFrasco(n, c)).filter(distr => distr.map(_._2).sum == m)
+  }
+
+
+
+
+
+
+}
