@@ -29,13 +29,9 @@ package object Canicas {
     }
   }
 
+
   def distribucion(m: Int, n: Int, c: Int): List[Distr] = {
     mezclarLCanicas(canicasPorFrasco(n, c)).filter(distr => distr.map(_._2).sum == m)
   }
-
-
-
-
-
 
 }
