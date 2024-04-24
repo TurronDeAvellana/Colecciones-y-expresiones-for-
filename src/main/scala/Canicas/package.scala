@@ -28,3 +28,5 @@ package object Canicas {
         } yield h :: t
     }
   }
+
+}
