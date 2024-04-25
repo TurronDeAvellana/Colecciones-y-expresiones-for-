@@ -34,4 +34,23 @@ package object Canicas {
     mezclarLCanicas(canicasPorFrasco(n, c)).filter(distr => distr.map(_._2).sum == m)
   }
 
+  def agrupaciones(m: Int): List[List[Int]] = {
+    def generarAgrupaciones(n: Int, canicasRestantes: Int): List[List[Int]] = {
+      if (canicasRestantes < 0) List.empty
+      else if (n == 1) {
+        if (canicasRestantes == 0) List(List(m))
+        else List.empty
+      } else {
+        val distribuciones = distribucion(canicasRestantes, n, n - 1).toList
+        for {
+          d <- distribuciones
+          frascos = d.map(_._1)
+          agrupacion <- generarAgrupaciones(n - 1, canicasRestantes - frascos.sum)
+        } yield frascos.head :: agrupacion
+      }
+    }
+
+    generarAgrupaciones(m, m)
+  }
+
 }
